@@ -1,21 +1,3 @@
-# Harry = ["Harry", "Potter", 11,
-#          "capelli castani", "occhi azzurri",
-#          "Grifondoro", ""]
-#
-# print(Harry)
-# print("Il nome è ", Harry[0])
-#
-# Harry[6] = "Expecto Patronum"
-#
-# print(Harry)
-#
-# Ron = ["Ron", "Weasley", 11,
-#          "capelli rossi", "occhi marroni",
-#          "Grifondoro", ""]
-#
-# Grifondoro = [Harry, Ron]
-from dataclasses import dataclass
-
 
 class Person:
     def __init__(self, nome, cognome, eta,
@@ -121,3 +103,5 @@ print(Harry, Ron, Susan, Xenophilius, Remus)
 personaggi = [Harry, Hermione, Ron, Neville, Ginny, Sirius, Remus, Minerva, Albus, Rubeus, James, Lily, Fred, George,
               Draco, Severus, Horace, Bellatrix, Lucius, Narcissa, Pansy, Blaise, Luna, Cho, Gilderoy, Filius, Xenophilius,
               Padma, Michael, Cedric, Pomona, Hannah, Ernest, Susan, Ted]
+
+
