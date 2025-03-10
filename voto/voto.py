@@ -1,4 +1,5 @@
 import math
+import operator
 from dataclasses import dataclass
 import flet
 cfuTot = 180
@@ -15,13 +16,19 @@ class Voto:
         else:
             return f"In {self.materia} hai preso {self.punteggio} il {self.data}"
 
+    def copy(self):
+        nuovo = Voto(self.materia, self.punteggio, self.data, self.lode)
+        return nuovo
+
 class Libretto:
     def __init__(self, proprietario, voti = []):
         self.proprietario = proprietario
         self.voti = voti
 
-    def append(self, voto): # duck!
-        self.voti.append(voto)
+    def append(self, voto):# duck!
+        #if self.hasConflitto(voto) is False and self.hasVoto(voto) :
+            self.voti.append(voto)
+
 
     def __str__(self):
         mystr = f"Libretto voti di {self.proprietario} \n"
@@ -72,7 +79,59 @@ class Libretto:
             if v.materia == nome:
                 return v
 
+    def hasVoto(self, voto):
+        for v in self.voti:
+            if v.materia == voto.materia and v.punteggio == voto.punteggio and v.lode == voto.lode:
+                return True
+        return False
 
+    def hasConflitto(self, voto):
+         for v in self.voti:
+            if v.materia == voto.materia and not(v.punteggio == voto.punteggio and v.lode == voto.lode):
+                return True
+         return False
+
+    def copy(self):
+        nuovo = Libretto(self.proprietario, [])
+        for v in self.voti:
+            nuovo.append(v.copy())
+        return nuovo
+
+    def creaMigliorato(self):
+        nuovo = self.copy()
+        for v in self.voti:
+            nuovo.append(Voto(v.materia, v.punteggio, v.data, v.lode))
+        for v in nuovo.voti:
+            if(18 <= v.punteggio < 24):
+                v.punteggio += 1
+            elif(24<= v.punteggio < 29):
+                v.punteggio += 2
+            elif(v.punteggio == 29):
+                v.punteggio = 30
+        return nuovo
+
+    def sortByMateria(self):
+        self.voti.sort(key = estraiMateria)
+
+    def creaLibOrdinatoPerVoto(self):
+        nuovo = self.copy()
+        nuovo.voti.sort(key = lambda v: (v.punteggio, v.lode), reverse = True)
+        return nuovo
+
+    def creaLibOrdinatoPerMateria(self):
+        nuovo = self.copy()
+        nuovo.sortByMateria()
+        return nuovo
+
+    def cancellaInferiori(self, punteggio):
+        nuovo = []
+        for v in self.voti:
+            if v.punteggio >= punteggio:
+                nuovo.append(v)
+        return nuovo
+
+def estraiMateria(voto):
+    return voto.materia
 
 def testVoto():
     print("Ho usato Voto in maniera standalone")
