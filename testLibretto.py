@@ -26,25 +26,45 @@ if votoTrasfigurazione is None:
 else:
     print(votoTrasfigurazione.materia)
 
+print("Verifico metodo hasVoto")
 print(mylib.hasVoto(v1))
-print(mylib.hasVoto(Voto("ArtiMarziali", 30, "2023-07-10", False)))
-mylib.append(Voto("Divinazione", 27, "2021-02-08", False))
-mylib.append((Voto("Cura delle creature magiche", 26, "2021-06-14", False)))
-nuovolib = mylib.creaMigliorato()
-print("------------------------")
-print("Libretto Originario")
-print(str(mylib))
-print("------------------------")
-print("Libretto Migliorato")
-print(str(nuovolib))
-print("------------------------")
-print("Libretto ordinato per materia")
-print(mylib.creaLibOrdinatoPerMateria())
-print("------------------------")
-print("Libretto ordinato per voto")
-print(mylib.creaLibOrdinatoPerVoto())
-print("------------------------")
-print("Libretto a cui ho eliminato i voti inferiori a 24")
-ordinato2 = mylib.creaLibOrdinatoPerVoto().cancellaInferiori(24)
-print(str(ordinato2))
+print(mylib.hasVoto(Voto("Aritmanzia", 30, "2023-07-10", False)))
+print(mylib.hasVoto(Voto("Difesa contro le arti oscure", 25, "2022-01-30", False)))
+print("Verifico metodo hasConflitto")
+print(mylib.hasConfitto(Voto("Difesa contro le arti oscure", 21, "2022-01-30", False)))
 
+print("Test append modificata")
+mylib.append(Voto("Aritmanzia", 30, "2023-07-10", False))
+# mylib.append(Voto("Difesa contro le arti oscure", 21, "2022-01-30", False))
+
+
+mylib.append(Voto("Divinazione", 27, "2021-02-08", False))
+mylib.append(Voto("Cura delle creature magiche", 26, "2021-06-14", False))
+
+print("---------------------------------------")
+print("Libretto originario")
+print(mylib)
+
+nuovoLib = mylib.creaMigliorato()
+
+print("---------------------------------------")
+print("Libretto migliorato")
+print(nuovoLib)
+print("Libretto originario")
+print(mylib)
+
+
+print("---------------------------------------")
+ordinato = mylib.creaLibOrdinatoPerMateria()
+print("Libretto ordinato per materia")
+print(ordinato)
+
+print("---------------------------------------")
+ordinato2 = mylib.creaLibOrdinatoPerVoto()
+print("Libretto ordinato per voto")
+print(ordinato2)
+
+print("---------------------------------------")
+print("Libretto a cui ho eliminato i voti inferiori a 24")
+ordinato2.cancellaInferiori(24)
+print(ordinato2)
