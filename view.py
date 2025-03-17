@@ -7,7 +7,7 @@ class View:
 
 
     def loadInterface(self):
-
+        pass
 
     def setController(self, c):
         self._controller = c
