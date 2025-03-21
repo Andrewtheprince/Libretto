@@ -1,8 +1,12 @@
 from view import View
+from voto.voto import Libretto
+
 
 class Controller:
     def __init__(self, v: View):
         self._view = v
+        self._student = Student()
+        self._model = Libretto(student, [])
 
     def handleAggiungi(self, e):
         strIn = self._view._txtIn.value
@@ -13,4 +17,6 @@ class Controller:
         else:
             self._view._txtOut.value=strIn
             self._view._page.update()
+
+    def getStudent(self):
 
