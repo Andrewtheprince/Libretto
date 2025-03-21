@@ -51,7 +51,7 @@ class View:
         self._btnCal = ft.ElevatedButton("Pick date",
                                          icon=ft.Icons.CALENDAR_MONTH,
                                          on_click=lambda _: self._page.open(self._dp))
-
+        
         self._btnAdd = ft.ElevatedButton("Aggiungi",
                                          on_click=self._controller.handleAggiungi)
         self._btnPrint = ft.ElevatedButton("Stampa",
