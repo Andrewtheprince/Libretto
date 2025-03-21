@@ -30,7 +30,7 @@ class Student(Person):
         self.animale = animale
 
     def __str__(self):
-        return f"Student: {self.nome} - {self._cognome} - {self.casa} \n "
+        return f"Student: {self.nome} {self._cognome} - {self.casa} \n "
 
     def __repr__(self):
         return f"Student(nome, cognome, eta, capelli, occhi, casa, animale)"
