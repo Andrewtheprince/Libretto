@@ -47,6 +47,7 @@ class View:
             on_change=lambda e: print(f"Giorno selezionato: {self._dp.value}"),
             on_dismiss=lambda e: print("Data non selezionata")
         )
+
         self._btnCal = ft.ElevatedButton("Pick date",
                                          icon=ft.Icons.CALENDAR_MONTH,
                                          on_click=lambda _: self._page.open(self._dp))
@@ -69,6 +70,6 @@ class View:
         self._controller = c
 
     def _fillDDVoto(self):
-        for i in range(18, 30):
+        for i in range(18, 31):
             self._ddVoto.options.append(ft.dropdown.Option(str(i)))
         self._ddVoto.options.append(ft.dropdown.Option("30L"))
